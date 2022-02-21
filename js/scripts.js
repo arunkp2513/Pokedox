@@ -1,4 +1,4 @@
-let myName = 'Arun';
-document.write(myName);
-let myName = 'Apoorva';
+alert('hello world');
+
+let myName = 'arun';
 document.write(myName);
