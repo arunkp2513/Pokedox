@@ -1,4 +1,6 @@
-let myName = 'ArunP';
+let myName = 'Arun';
+document.write(myName);
+let myName = 'Apoorva';
 document.write(myName);
 
 let myFavouriteFood = 'dosa';
