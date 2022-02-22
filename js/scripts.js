@@ -1,5 +1,4 @@
-let pokemonList = [
-  {
+let pokemonList = [{
     name: "Bulbasur",
     height: 7,
     type: ["grass", "poison"],
@@ -15,3 +14,17 @@ let pokemonList = [
     type: ["normal", "flying"],
   },
 ];
+
+for (i = 0; i < pokemonList.length; i++) {
+  document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") ");
+}
+
+for (i = 0; i < pokemonList.length; i++) {
+  if (pokemonList[i].height < 5) {
+    document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") ");
+  } else if (pokemonList[i].height > 5) {
+    document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") " + " wow,Thats big!");
+  } else {
+    document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") ");
+  }
+}
