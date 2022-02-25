@@ -1,3 +1,4 @@
+let pokemonRepository = (function (){
 let pokemonList = [{
     name: "Bulbasur",
     height: 7,
@@ -15,7 +16,24 @@ let pokemonList = [{
   },
 ];
 
-for (i = 0; i < pokemonList.length; i++) {
+function add(pokemon){
+  pokemonList.push(pokemon);
+}
+function getAll(){
+  return pokemonList;
+}
+
+return{
+  add: add,
+  getAll : getAll
+};
+}) ();
+
+pokemonRepository.getAll().forEach(function(pokemon) {
+  console.log(pokemon);
+});
+
+/*for (i = 0; i < pokemonList.length; i++) {
   document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") ");
 }
 
@@ -27,4 +45,4 @@ for (i = 0; i < pokemonList.length; i++) {
   } else {
     document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") ");
   }
-}
+}*/
