@@ -1,0 +1,13 @@
+.cont{
+  border: 2px solid blue;
+  font-size: 18px;
+  color: #fc6d6d;
+  padding: 16px 32px;
+  margin: 4px 2px;
+  background-color: white;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+
+}

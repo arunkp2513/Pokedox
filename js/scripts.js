@@ -1,48 +1,57 @@
-let pokemonRepository = (function (){
-let pokemonList = [{
-    name: "Bulbasur",
-    height: 7,
-    type: ["grass", "poison"],
-  },
-  {
-    name: "Incineroar",
-    height: 6,
-    type: ["fire", "dark"],
-  },
-  {
-    name: "Pidgey",
-    height: 1,
-    type: ["normal", "flying"],
-  },
-];
+let pokemonRepository = (function() {
+  let pokemonList = [{
+      name: "Bulbasur",
+      height: 7,
+      type: ["grass", "poison"],
+    },
+    {
+      name: "Incineroar",
+      height: 6,
+      type: ["fire", "dark"],
+    },
+    {
+      name: "Pidgey",
+      height: 1,
+      type: ["normal", "flying"],
+    },
+  ];
 
-function add(pokemon){
-  pokemonList.push(pokemon);
-}
-function getAll(){
-  return pokemonList;
-}
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
 
-return{
-  add: add,
-  getAll : getAll
-};
-}) ();
+  function getAll() {
+    return pokemonList;
+  }
+
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
+
+  function addListen(button, pokemon) {
+    button.addEventListener('click', function(event) { //adding an event listener which listens to event click
+      showDetails(pokemon);
+    });
+  }
+
+  function addListItem(pokemon) {
+    let poke = document.querySelector('.pokemon-List'); // poke variable with ul element
+    let listItem = document.createElement('li'); // Creating li element
+    let button = document.createElement('button'); // creating button element
+    button.innerText = pokemon.name;
+    button.classList.add('cont');
+    listItem.appendChild(button); // apeending button to listItem as its appendChild
+    poke.appendChild(listItem); //appending listItem to unordered list
+    addListen(button, pokemon); // separate function to add an addEventListener
+    //});
+  }
+  return {
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem
+  };
+})();
 
 pokemonRepository.getAll().forEach(function(pokemon) {
-  console.log(pokemon);
+  pokemonRepository.addListItem(pokemon);
 });
-
-/*for (i = 0; i < pokemonList.length; i++) {
-  document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") ");
-}
-
-for (i = 0; i < pokemonList.length; i++) {
-  if (pokemonList[i].height < 5) {
-    document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") ");
-  } else if (pokemonList[i].height > 5) {
-    document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") " + " wow,Thats big!");
-  } else {
-    document.write(pokemonList[i].name + "(height:" + pokemonList[i].height + ") ");
-  }
-}*/
