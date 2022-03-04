@@ -35,13 +35,13 @@ let pokemonRepository = (function() {
   }
 
   function addListItem(pokemon) {
-    let poke = document.querySelector('.pokemon-List'); // poke variable with ul element
+    let list = document.querySelector('.pokemon-List'); // poke variable with ul element
     let listItem = document.createElement('li'); // Creating li element
     let button = document.createElement('button'); // creating button element
     button.innerText = pokemon.name;
     button.classList.add('cont');
     listItem.appendChild(button); // apeending button to listItem as its appendChild
-    poke.appendChild(listItem); //appending listItem to unordered list
+    list.appendChild(listItem); //appending listItem to unordered list
     addListen(button, pokemon); // separate function to add an addEventListener
     //});
   }
