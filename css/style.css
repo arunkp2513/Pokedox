@@ -1,10 +1,10 @@
-.container{
-  border: 2px solid rgba(#090909, 0.08);
+.btn-primary{
+  border: 2px solid #f00b08;
   font-size: 18px;
   color: #090909;
   padding: 16px 32px;
   margin: 4px 2px;
-  background-color: #cfc5c6;
+  background-color: #f64658;
   cursor: pointer;
   text-align: center;
   display: inline-block;

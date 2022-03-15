@@ -25,11 +25,17 @@ let pokemonRepository = (function() {
   }
 
   function addListItem(pokemon) {
-    let list = document.querySelector('.pokemon-List'); // poke variable with ul element
+    let list = document.querySelector('.list-group'); // poke variable with ul element
     let listItem = document.createElement('li'); // Creating li element
     let button = document.createElement('button'); // creating button element
+
+    listItem.classList.add('group-list-item');
     button.innerText = pokemon.name;
-    button.classList.add('container');
+    //button.classList.add('container');
+    button.classList.add('btn-primary')
+    // Adding datatoggle and data target
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#pokemonModal')
     listItem.appendChild(button); // appending button to listItem as its appendChild
     list.appendChild(listItem); //appending listItem to unordered list
     addListen(button, pokemon); // separate function to add an addEventListener
@@ -66,50 +72,39 @@ let pokemonRepository = (function() {
   }
   // Creating a modal
   function showModal(pokemon) {
-    modalContainer.innerHTML = ' ';
-    modalContainer.classList.add('is-visible');
+    let modalTitle = document.querySelector('.modal-title');
+    let modalBody = document.querySelector('.modal-body');
 
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-    //New modal content
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'Close';
-    closeButtonElement.addEventListener('click', hideModal);
-
+    modalTitle.innerHtml = ' ';
+    modalBody.innerHtml = ' ';
+    // Setting name to be the title
     let nameElement = document.createElement('h1');
     nameElement.innerText = pokemon.name;
+    modalTitle.appendChild(nameElement);
 
     let heightElement = document.createElement('p');
     heightElement.innerText = 'Height of pokemon = ' + pokemon.height;
 
+    let weigthElement = document.createElement('p');
+    weightElement.innerText = 'weight of pokemon = ' + pokemon.weight;
+
     let imageElement = document.createElement('img');
     imageElement.src = pokemon.imageUrl;
 
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(nameElement);
-    modal.appendChild(imageElement);
-    modal.appendChild(heightElement);
-    modalContainer.appendChild(modal);
+
+
+    let typesElement = document.createElement('p');
+    typesElement.innerText = 'Types = ' + pokemon.types.join(' ,');
+
+
+
+    modalBody.appendChild(imageElement);
+    modalBody.appendChild(heightElement);
+    modalBody.appendChild(weightElement);
+    modalBody.appendChild(typesElement);
+
   }
 
-  function hideModal() {
-    modalContainer.classList.remove('is-visible');
-  }
-  // Pressing escape button scenario
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-      hideModal();
-    }
-  });
-  modalContainer.addEventListener('click', (e) => {
-    // Since this is also triggered when clicking INSIDE the modal
-    // We only want to close if the user clicks directly on the overlay
-    let target = e.target;
-    if (target === modalContainer) {
-      hideModal();
-    }
-  });
 
 
   return {
