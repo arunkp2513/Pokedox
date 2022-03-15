@@ -85,8 +85,8 @@ let pokemonRepository = (function() {
     let heightElement = document.createElement('p');
     heightElement.innerText = 'Height of pokemon = ' + pokemon.height;
 
-    let weigthElement = document.createElement('p');
-    weigthElement.innerText = 'weight of pokemon = ' + pokemon.weight;
+    let weightElement = document.createElement('p');
+    weightElement.innerText = 'weight of pokemon = ' + pokemon.weight;
 
     let imageElement = document.createElement('img');
     imageElement.src = pokemon.imageUrl;
