@@ -34,11 +34,11 @@ let pokemonRepository = (function() {
     button.classList.add('btn-primary')
     // Adding datatoggle and data target
     button.setAttribute('data-toggle', 'modal');
-    button.setAttribute('data-target', '#pokemonModal')
+    button.setAttribute('data-target', '#pokemonModal');
     listItem.appendChild(button); // appending button to listItem as its appendChild
     list.appendChild(listItem); //appending listItem to unordered list
     addListen(button, pokemon); // separate function to add an addEventListener
-    //});
+
   }
 
   function loadList() {
@@ -98,7 +98,7 @@ let pokemonRepository = (function() {
 
 
     let typesElement = document.createElement('p');
-    typesElement.innerText = 'Types = ' + pokemon.types.join(' ,');
+    typesElement.innerText = 'Types = ' + pokemon.types.join(',');
 
 
 
