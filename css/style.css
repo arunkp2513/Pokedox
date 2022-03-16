@@ -1,5 +1,5 @@
-.btn-primary{
-  border: 2px solid #f00b08;
+.btn-primary {
+  border: 2px solid #140403;
   font-size: 18px;
   color: #090909;
   padding: 16px 32px;
@@ -9,17 +9,28 @@
   text-align: center;
   display: inline-block;
   transition-duration: 0.4s;
+  width: 200px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  border: 4px outset black;
 }
-.btn-primary:hover{
+
+.btn-primary:hover {
   background-color: #55c388;
 }
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
+  background: #CECBC2;
+  background: -moz-linear-gradient(left, #CECBC2 0%, #727272 50%, #7F8282 100%);
+  background: -webkit-linear-gradient(left, #CECBC2 0%, #727272 50%, #7F8282 100%);
+  background: linear-gradient(to right, #CECBC2 0%, #727272 50%, #7F8282 100%);
 }
-p{
+
+p {
   font-weight: bold;
 }
-li{
+
+li {
   list-style-type: none;
 }

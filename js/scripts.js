@@ -78,9 +78,9 @@ let pokemonRepository = (function() {
   function showModal(pokemon) {
     let modalTitle = document.querySelector('.modal-title');
     let modalBody = document.querySelector('.modal-body');
-
-    modalTitle.innerHtml = ' ';
-    modalBody.innerHtml = ' ';
+           
+    modalTitle.innerHTML= ' ';
+    modalBody.innerHTML = ' ';
     // Setting name to be the title
     let nameElement = document.createElement('h1');
     nameElement.innerText = pokemon.name;
