@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .btn-primary {
   border: 2px solid #140403;
   font-size: 18px;
@@ -39,4 +43,22 @@ li {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
+}
+
+@media all and (max-width:500px) {
+  .list-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px) {
+  .list-group {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .list-group {
+    grid-gap: 20px;
+  }
 }
