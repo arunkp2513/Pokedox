@@ -5,7 +5,7 @@ let pokemonRepository = (function() {
     e.push(t);
   }
   function o(e) {
-    i(e).then(function() {
+    r(e).then(function() {
       !(function(e) {
         let t = document.querySelector(".modal-title"),
           n = document.querySelector(".modal-body");
@@ -16,18 +16,35 @@ let pokemonRepository = (function() {
         i.innerText = "Height of pokemon = " + e.height;
         let r = document.createElement("p");
         r.innerText = "weight of pokemon = " + e.weight;
-        let l = document.createElement("img");
-        l.src = e.imageUrl;
-        let c = document.createElement("p");
-        (c.innerText = "Types = " + e.types.join(",")),
-          n.appendChild(l),
+        let c = document.createElement("img");
+        c.src = e.imageUrl;
+        let l = document.createElement("p");
+        (l.innerText = "Types = " + e.types.join(",")),
+          n.appendChild(c),
           n.appendChild(i),
           n.appendChild(r),
-          n.appendChild(c);
+          n.appendChild(l);
       })(e);
     });
   }
   function i(e) {
+    let t = document.querySelector(".list-group"),
+      n = document.createElement("li"),
+      i = document.createElement("button");
+    n.classList.add("group-list-item"),
+      (i.innerText = e.name),
+      i.classList.add("btn-primary"),
+      i.setAttribute("data-toggle", "modal"),
+      i.setAttribute("data-target", "#pokemonModal"),
+      n.appendChild(i),
+      t.appendChild(n),
+      (function(e, t) {
+        e.addEventListener("click", function() {
+          o(t);
+        });
+      })(i, e);
+  }
+  function r(e) {
     let t = e.detailsUrl;
     return fetch(t)
       .then(function(e) {
@@ -51,23 +68,7 @@ let pokemonRepository = (function() {
     getAll: function() {
       return e;
     },
-    addListItem: function(e) {
-      let t = document.querySelector(".list-group"),
-        n = document.createElement("li"),
-        i = document.createElement("button");
-      n.classList.add("group-list-item"),
-        (i.innerText = e.name),
-        i.classList.add("btn-primary"),
-        i.setAttribute("data-toggle", "modal"),
-        i.setAttribute("data-target", "#pokemonModal"),
-        n.appendChild(i),
-        t.appendChild(n),
-        (function(e, t) {
-          e.addEventListener("click", function() {
-            o(t);
-          });
-        })(i, e);
-    },
+    addListItem: i,
     loadList: function() {
       return fetch(t)
         .then(function(e) {
@@ -82,11 +83,21 @@ let pokemonRepository = (function() {
           console.error(e);
         });
     },
-    loadDetails: i
+    loadDetails: r,
+    loadFindPokemon: function() {
+      e.forEach(i);
+      let t = document.querySelector(".list-group");
+      document.querySelector("#search-input").addEventListener("input", n => {
+        (t.innerHTML = " "),
+          (function(t) {
+            return t
+              ? e.filter(e => e.name.toLowerCase().includes(t.toLowerCase()))
+              : e;
+          })(n.target.value).forEach(i);
+      });
+    }
   };
 })();
 pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(e) {
-    pokemonRepository.addListItem(e);
-  });
+  pokemonRepository.loadFindPokemon();
 });

@@ -62,3 +62,7 @@ li {
     grid-gap: 20px;
   }
 }
+
+#search-input {
+  float: right;
+}

@@ -24,8 +24,31 @@ let pokemonRepository = (function() {
     });
   }
 
+  //Searching for a pokemon
+  function findPokemon(name) {
+    if (!name) {
+      return pokemonList;
+    }
+    return pokemonList.filter(pokemonName =>
+      pokemonName.name.toLowerCase().includes(name.toLowerCase())
+    );
+  }
+
+  function loadFindPokemon() {
+    //Displaying entire pokemonList
+    pokemonList.forEach(addListItem);
+    //reference for the pokemonList
+    let container = document.querySelector('.list-group');
+    //Event listener
+    document.querySelector('#search-input').addEventListener('input', event => {
+      container.innerHTML = ' ';
+      let findPokemonList = findPokemon(event.target.value);
+      findPokemonList.forEach(addListItem);
+    });
+  }
+
   function addListItem(pokemon) {
-    let list = document.querySelector('.list-group'); // poke variable with ul element
+    let list = document.querySelector('.list-group'); // pokemon variable with ul element
     let listItem = document.createElement('li'); // Creating li element
     let button = document.createElement('button'); // creating button element
 
@@ -114,12 +137,17 @@ let pokemonRepository = (function() {
     getAll: getAll,
     addListItem: addListItem,
     loadList: loadList,
-    loadDetails: loadDetails
+    loadDetails: loadDetails,
+    loadFindPokemon: loadFindPokemon
   };
 })();
 //Loading data
+//pokemonRepository.loadList().then(function() {
+//  pokemonRepository.getAll().forEach(function(pokemon) {
+//  pokemonRepository.addListItem(pokemon);
+//  });
+//});
+
 pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(pokemon) {
-    pokemonRepository.addListItem(pokemon);
-  });
+  pokemonRepository.loadFindPokemon();
 });
